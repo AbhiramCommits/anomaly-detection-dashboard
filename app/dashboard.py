@@ -13,9 +13,12 @@ st.set_page_config(page_title="Anomaly Detection Dashboard", layout="wide")
 st.title("Anomaly Detection Dashboard")
 
 # ---------- Load data ----------
+
+
 @st.cache_data
 def load_data():
     return pd.read_csv(INPUT_FILE, parse_dates=["timestamp"])
+
 
 df = load_data()
 

@@ -29,7 +29,7 @@ scaled = scaler.fit_transform(df[SENSOR_COLS].values)  # (50000, 4)
 
 # ---------- 2. Reshape into sequences ----------
 n_samples = len(scaled)
-sequences = np.array([scaled[i : i + SEQ_LEN] for i in range(n_samples - SEQ_LEN + 1)])
+sequences = np.array([scaled[i: i + SEQ_LEN] for i in range(n_samples - SEQ_LEN + 1)])
 # shape: (49971, 30, 4)
 
 # ---------- 3. Train/val split ----------
@@ -97,11 +97,14 @@ df_if = pd.read_csv(FLAGGED_FILE)
 if_pred = df_if["anomaly_flag"].values
 
 # ---------- 9. Print metrics ----------
+
+
 def print_metrics(name, y_pred):
     p = precision_score(y_true, y_pred)
     r = recall_score(y_true, y_pred)
     f = f1_score(y_true, y_pred)
     print(f"{name:>22s}  | Precision: {p:.4f}  | Recall: {r:.4f}  | F1: {f:.4f}")
+
 
 print("\nEvaluation Results")
 print("-" * 58)
